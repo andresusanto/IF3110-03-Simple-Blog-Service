@@ -35,6 +35,8 @@
     <message name="getPostResponse"/>
     <message name="login"/>
     <message name="loginResponse"/>
+    <message name="getUser"/>
+    <message name="getUserResponse"/>
     <portType name="simpleblogws">
         <operation name="addPost">
             <input message="tns:addPost"/>
@@ -96,6 +98,10 @@
             <input message="tns:login"/>
             <output message="tns:loginResponse"/>
         </operation>
+        <operation name="getUser">
+            <input message="tns:getUser"/>
+            <output message="tns:getUserResponse"/>
+        </operation>
     </portType>
     <binding name="simpleblogwsPortBinding" type="tns:simpleblogws">
         <wsp:PolicyReference URI="#simpleblogwsPortBindingPolicy"/>
@@ -156,6 +162,10 @@
             <output/>
         </operation>
         <operation name="login">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="getUser">
             <input/>
             <output/>
         </operation>
