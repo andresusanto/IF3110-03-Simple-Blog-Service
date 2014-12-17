@@ -875,50 +875,6 @@ public class simpleblogws {
         return res[0];
     }
 
-    /**
-     * Web service operation
-     */
-    @WebMethod(operationName = "getUser")
-    public Akun getUser(@WebParam(name = "username") String username) {
-         //TODO write your implementation code here:
-        final Akun tmp = new Akun();
-        final CountDownLatch done = new CountDownLatch(1);
-        Firebase ref = new Firebase("https://blistering-fire-8149.firebaseio.com/user/" + username);
-        
-        ref.addListenerForSingleValueEvent(new ValueEventListener(){
-
-            @Override
-            public void onDataChange(DataSnapshot ds) {
-                
-                
-                if (ds.getChildrenCount() > 1) {
-                
-                    tmp.username = ds.getKey();
-                    tmp.email = (String)ds.child("email").getValue();
-                    tmp.password = (String)ds.child("password").getValue();
-                    tmp.role = Integer.parseInt(ds.child("role").getValue().toString());
-                
-                }
-                
-                done.countDown();
-            }
-
-            @Override
-            public void onCancelled(FirebaseError fe) {
-                done.countDown();
-            }
-        
-        });
-        
-        try {
-            done.await();
-        } catch (InterruptedException ex) {
-            
-        }
-        
-        return tmp;
-    }
-
 
    
 }
