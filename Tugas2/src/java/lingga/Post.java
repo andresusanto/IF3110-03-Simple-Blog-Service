@@ -129,6 +129,15 @@ public class Post implements Comparable {
 	else return "block-inline";
     }
     
+    public String showPost(int role){
+	if (role == 1 && published == 1) return "";
+	else if (role == 2 && published == 0) return "";
+	else if (role == 2 && published == 1) return "";
+	else if (role == 3) return "";
+	else if (role == 4 && published == 1) return "";
+	else return "invisiblePost";
+    }
+    
     public String publishButton(int role){
 	if(published==1 || role==1 || role==4) return "none";
 	else return "block-inline";

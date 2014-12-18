@@ -392,6 +392,10 @@ hr{
     min-width: 0px;
 }
 
+.invisiblePost{
+    display: none;
+}
+
 @media all and (max-width: 1200px) {
     .postmanip #dashmenu{
         left:5%;

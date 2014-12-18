@@ -46,7 +46,7 @@ and open the template in the editor.
             <div id="body">
                 <div id="postContainer">
                     <ui:repeat var="item" value="#{postlist.getSearchResults(param['query'], dbconnector)}">
-                        <div class="onePost">
+                        <h:panelGroup layout="block" class="onePost #{item.showPost(user.type)}">
                             <a href="Post.xhtml?pid=#{item.id_post}"><h1>#{item.judul}</h1></a> 
                             <p><h:outputText value="#{item.tanggal}" escape="false" /></p>
                             <p><h:outputText value="#{item.getExcerptHTML(100)}" escape="false" />
@@ -59,7 +59,7 @@ and open the template in the editor.
                                 <!-- Publish Post -->
                                 <a style="display:#{item.publishButton(user.type)}" href="" id="pub#{item.id_post}" class="publishbutton">Publish</a>
                             </div>
-                        </div>
+                        </h:panelGroup>
                     </ui:repeat>
                 </div>
             </div>
@@ -74,4 +74,5 @@ and open the template in the editor.
         <ui:include src="logmodals.xhtml" />
     </h:body>
     <script src="#{facesContext.externalContext.requestContextPath}/resources/js/deletor.js" type="text/javascript"></script>
+    <script src="#{facesContext.externalContext.requestContextPath}/resources/js/invisiblePostDeletor.js" type="text/javascript"></script>
 </html>
